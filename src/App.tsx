@@ -1582,10 +1582,7 @@ function App() {
     };
 
     const handleSelectCommitment = (commitment: FixedCommitment, duration: number) => {
-        // Only allow timer for commitments that count toward daily hours
-        if (!commitment.countsTowardDailyHours) return;
-
-        // First, ensure any running timer is stopped to prevent race conditions
+        // Stop any running timer to prevent race conditions
         setGlobalTimer(prev => ({
             ...prev,
             isRunning: false,
